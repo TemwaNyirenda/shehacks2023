@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <ul class="menu">
+            <li>ABOUT US</li>
+            <li>CONTACTS</li>
+            <li>HELP</li>
+        </ul>
+
+        <ul class = "header">
+            <li>Welcome to our Mukuru Website!</li>
+            <li>How can we help you?</li>
+        </ul>
+
+    </header>
+    
+            <select id= "dropdown">
+
+                <option value ="" disabled selected>Select the country you reside in</option>
+                </select>
+    <script>
+        const dropdown = document.getElementById("dropdown");
+
+        fetch("https://api-uct.mukuru.com/taurus/v1/resources/countries")
+        .then(response=> response.createElement("option"))
+        .then(data => {
+            data.forEach(country=> {
+                const option = document.createElement("option");
+                option.textContent = country.name.common;
+                dropdown.appendChild(option);
+            });
+        })
+
+    </script>
+      
+</body>
+
+
+</html>

@@ -1,0 +1,18 @@
+import React from 'React'
+import {Text, View} from 'react-native'
+import {Headers} from './Header'
+
+
+const MukuruAppFrontPage = () => {
+    return (
+        <View>
+            <Headers title = "Welcome to the Mukuru App!"/>
+            <Text style = {heading} >How can we help you?</Text>
+            <Text>
+
+            </Text>
+        </View>
+       
+    )
+  
+}
