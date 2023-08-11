@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remittance Calculator</title>
+    <!--Link CSS below-->
+    <link rel="stylesheet" href="stylesheet.css">
+
+</head>
+<body>
+    <div class="calculator">
+        <label for="payInCountry">Sending From:</label>
+        <select id="payInCountry"></select>
+
+        <label for="payOutCountry">Sending To:</label>
+        <select id="payOutCountry"></select>
+
+        <label for="productType">Product Type:</label>
+        <select id="productType"></select>
+
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount">
+
+        <button id="calculateBtn">Calculate</button>
+
+        <div id="result"></div>
+    </div>
+    <!--JavaScript code in script.js-->
+    <script src="script.js"></script>
+    
+</body>
+</html>
