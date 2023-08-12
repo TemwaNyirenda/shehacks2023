@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/tenyire022_shehacks/Desktop/mukuru_wtc_2023_hackathon/shehacks2023/shehacks2023-venv"
+VIRTUAL_ENV="/home/girlcode/Desktop/mukuru_wtc_hackathon_2023/shehacks2023/shehacks2023-venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

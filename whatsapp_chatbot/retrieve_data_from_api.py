@@ -75,12 +75,14 @@ def get_country_code(country):
             return country_data['code']
         
 def get_list_available_products(in_country, out_country):
+    print(in_country)
+    print(out_country)
     # in_country is where money is coming from
 
     in_country_code = get_country_code(in_country)
-    # print(in_country_code)
+    print(in_country_code)
     out_country_code = get_country_code(out_country)
-    # print(out_country_code)
+    print(out_country_code)
 
     total_items = json.loads(requests.get('https://api-uct.mukuru.com/taurus/v1/products/price-check').text)['totalItems']
     # print(total_items)
@@ -96,7 +98,9 @@ def get_list_available_products(in_country, out_country):
             products_data['payOutCountryCode'] == out_country_code:
             available_products.append(products_data['description'])
 
-    # print(available_products)
+    print(available_products)
+
+    return available_products
 
 def get_chosen_product_data(chosen_product):
     total_items = json.loads(requests.get('https://api-uct.mukuru.com/taurus/v1/products/price-check').text)['totalItems']

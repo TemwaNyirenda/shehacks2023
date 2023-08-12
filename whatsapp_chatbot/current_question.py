@@ -34,6 +34,8 @@ def execute_current_question(user_data, user_request):
         return execute_question_9(user_data, user_request)
     elif current_question == 10:
         return execute_question_10(user_data, user_request)
+    elif current_question == 11:
+        return execute_question_11(user_data, user_request)
     else:
         print("\n** INTERNAL ERROR: Incorrect current question retrieved from user data **\n")
 
@@ -73,6 +75,12 @@ def get_current_question_message(current_question_num):
     elif current_question_num == 10:
         return question_10_message()
     
+    elif current_question_num == 11:
+        return question_11_message()
+    
+    elif current_question_num == 12:
+        return question_12_message()
+    
     else:
         return "Haven't coded up to that point"
     
@@ -107,8 +115,7 @@ def execute_question_0(user_data, user_request):
 
 def question_1_message():
     return "Awesome! First you need to select what format you would like the chatbot to reply in:\n\
-1. Text\n\
-2. Voice Notes"
+1. Text"
 
 
 def execute_question_1(user_data, user_request):
@@ -345,6 +352,7 @@ list_query(retrieve_data.retrieve_countries_dict()[to_country_group])
 
 
 def execute_question_9(user_data, user_request):
+    global to_country
     incoming_msg = user_request.values.get('Body', '')
     try:
         user_choice = int(incoming_msg)
@@ -357,6 +365,7 @@ def execute_question_9(user_data, user_request):
 
     if user_choice >= 1 and user_choice <= len(country_list):
         choosen_country = country_list[user_choice - 1]
+        to_country = choosen_country
         print("\t\tchosen country " + choosen_country)
         db_operations.update_user_data(user_data[1], ["current_question = 10", "to_country_selection = \"" + choosen_country + "\""])
         return get_current_question_message(10)
@@ -366,6 +375,11 @@ def execute_question_9(user_data, user_request):
 
 def question_10_message():
     products_list = retrieve_data.get_list_available_products(from_country, to_country)
+
+    if not products_list:
+        return "There is no products available\n\
+Send anything to go back to the main menu\n"
+    
     return "Please select an available product:\n" + \
 list_query(products_list)   
 
@@ -374,6 +388,11 @@ def execute_question_10(user_data, user_request):
     global chosen_product
 
     products_list = retrieve_data.get_list_available_products(user_data[6], user_data[7])
+
+    if not products_list:
+        db_operations.update_user_data(user_data[1], ["current_question = 4"])
+        return "There is no products available\n\
+Going back to the main menu\n" + get_current_question_message(4)
 
     if (not products_list):
         db_operations.update_user_data(user_data[1], ["current_question = 4"])
@@ -400,8 +419,10 @@ def question_11_message():
 
     product_data = retrieve_data.get_chosen_product_data(chosen_product)
     return "The currency that you will send will be " + product_data['payInCurrencyCode'] + "\n\
-        and the recepient will receive in " + product_data['payOutCurrencyCode'] +"\n\
-        Please the amount you want to send:"
+and the recepient will receive in " + product_data['payOutCurrencyCode'] +"\n\
+The fee will be " + product_data['fee']['currencyCode'] + " " + str(product_data['fee']['amount']) + "\n\
+And the rate will be " + str(product_data['rate']['rate']) + "\n\
+Please the amount you want to send:"
 
 
 def execute_question_11(user_data, user_request):
@@ -411,15 +432,19 @@ def execute_question_11(user_data, user_request):
     try:
         user_choice = int(incoming_msg)
     except:
-        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(10)
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(11)
     
     amount = user_choice
+
+    if amount < product_data['fee']['amount']:
+        return "Amount you'll send is less than the fees\nPlease send a new amount\n---\n" + get_current_question_message(11)
+    
     db_operations.update_user_data(user_data[1], ["current_question = 4"])
     return get_current_question_message(12)
 
 
 def question_12_message():
-    return "The recepient will recieve " + product_data['payOutCurrencyCode'] + " " + calculate_receipient_amount()
+    return "The recepient will recieve " + product_data['payOutCurrencyCode'] + " " + str(calculate_receipient_amount())
 
 
 def list_query(query):
@@ -434,4 +459,7 @@ def list_query(query):
     return query_list_string
 
 def calculate_receipient_amount():
-    return (amount - product_data['fee']['amount']) * product_data['rate']['rate']
+    print(amount)
+    print(product_data['fee']['amount'])
+    print(product_data['rate']['rate'])
+    return round((amount - product_data['fee']['amount']) * product_data['rate']['rate'])

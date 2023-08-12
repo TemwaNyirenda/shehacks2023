@@ -1,7 +1,7 @@
 import os.path
 import json
 
-twilio_cred_file_path = "/home/tenyire022_shehacks/Desktop/mukuru_wtc_2023_hackathon/twilio_cred.json"
+twilio_cred_file_path = "/home/girlcode/Desktop/mukuru_wtc_hackathon_2023/twilio_cred.json"
 
 
 def get_twilio_cred():
