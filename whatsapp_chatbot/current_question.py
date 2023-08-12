@@ -1,13 +1,16 @@
 import whatsapp_chatbot.db_operations as db_operations
 import whatsapp_chatbot.retrieve_data_from_api as retrieve_data
 
-user_datta = ""
+from_country_group_choice = ""
+from_country = ""
+to_country_group_choice = ""
+to_country = ""
+chosen_product = ""
+product_data = []
+amount = 0
 
 
 def execute_current_question(user_data, user_request):
-    global user_datta
-
-    user_datta = user_data
 
     current_question = user_data[2]
 
@@ -25,6 +28,12 @@ def execute_current_question(user_data, user_request):
         return execute_question_6(user_data, user_request)
     elif current_question == 7:
         return execute_question_7(user_data, user_request)
+    elif current_question == 8:
+        return execute_question_8(user_data, user_request)
+    elif current_question == 9:
+        return execute_question_9(user_data, user_request)
+    elif current_question == 10:
+        return execute_question_10(user_data, user_request)
     else:
         print("\n** INTERNAL ERROR: Incorrect current question retrieved from user data **\n")
 
@@ -54,6 +63,15 @@ def get_current_question_message(current_question_num):
     
     elif current_question_num == 7:
         return question_7_message()
+    
+    elif current_question_num == 8:
+        return question_8_message()
+    
+    elif current_question_num == 9:
+        return question_9_message()
+    
+    elif current_question_num == 10:
+        return question_10_message()
     
     else:
         return "Haven't coded up to that point"
@@ -205,6 +223,7 @@ list_query(retrieve_data.retrieve_countries_dict().keys())
 
 
 def execute_question_6(user_data, user_request):
+    global from_country_group_choice
 
     incoming_msg = user_request.values.get('Body', '')
     try:
@@ -213,41 +232,195 @@ def execute_question_6(user_data, user_request):
         return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(6)
 
 
-    if user_choice == 1:
-        country_group = "A, B, C"
-    elif user_choice == 2:
-        country_group = "D, E, F"
-    elif user_choice == 3:
-        country_group = "G, H, I"
-    elif user_choice == 4:
-        country_group = "J, K, L"
-    elif user_choice == 5:
-        country_group = "M, N, O"
-    elif user_choice == 6:
-        country_group = "P, Q, R"
-    elif user_choice == 7:
-        country_group = "S, T, U"
-    elif user_choice == 8:
-        country_group = "V, W, X"
-    elif user_choice == 9:
-        country_group = "Y, Z"   
+    # if user_choice == 1:
+    #     country_group = "A, B, C"
+    # elif user_choice == 2:
+    #     country_group = "D, E, F"
+    # elif user_choice == 3:
+    #     country_group = "G, H, I"
+    # elif user_choice == 4:
+    #     country_group = "J, K, L"
+    # elif user_choice == 5:
+    #     country_group = "M, N, O"
+    # elif user_choice == 6:
+    #     country_group = "P, Q, R"
+    # elif user_choice == 7:
+    #     country_group = "S, T, U"
+    # elif user_choice == 8:
+    #     country_group = "V, W, X"
+    # elif user_choice == 9:
+    #     country_group = "Y, Z"   
 
+    country_group_list = list(retrieve_data.retrieve_countries_dict().keys())
+    country_group_list.sort()
+    print("\t\t" + str(country_group_list))
+    from_country_group_choice = country_group_list[user_choice - 1]
 
     if user_choice >= 1 and user_choice <= 9:
-        db_operations.update_user_data(user_data[1], ["current_question = 7", "from_country_selection = \"" + country_group + "\""])
+        db_operations.update_user_data(user_data[1], ["current_question = 7", "from_country_selection = \"" + from_country_group_choice + "\""])
         return get_current_question_message(7)
     else:
         return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(6)
 
 
 def question_7_message():
-    from_country_group = user_datta[6]
-    return "Okay, first we need you to select the country you're sending from.\n\
-Please select a country:\n" + \
+    from_country_group = from_country_group_choice
+    return "Please select a country:\n" + \
 list_query(retrieve_data.retrieve_countries_dict()[from_country_group])   
 
+
 def execute_question_7(user_data, user_request):
-    pass
+    global from_country
+
+    incoming_msg = user_request.values.get('Body', '')
+    try:
+        user_choice = int(incoming_msg)
+    except:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(7)
+    
+    from_country_group = user_data[6]
+
+    country_list = retrieve_data.retrieve_countries_dict()[from_country_group]
+
+    if user_choice >= 1 and user_choice <= len(country_list):
+        choosen_country = country_list[user_choice - 1]
+        from_country = choosen_country
+        print("\t\tchosen country " + choosen_country)
+        db_operations.update_user_data(user_data[1], ["current_question = 8", "from_country_selection = \"" + choosen_country + "\""])
+        return get_current_question_message(8)
+    else:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(7)
+
+
+def question_8_message():
+    return "Next we need you to select the country you're sending to.\n\
+Please select the group that your country falls under:\n" + \
+list_query(retrieve_data.retrieve_countries_dict().keys())
+
+
+def execute_question_8(user_data, user_request):
+    global to_country_group_choice
+
+    incoming_msg = user_request.values.get('Body', '')
+    try:
+        user_choice = int(incoming_msg)
+    except:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(6)
+
+
+    # if user_choice == 1:
+    #     country_group = "A, B, C"
+    # elif user_choice == 2:
+    #     country_group = "D, E, F"
+    # elif user_choice == 3:
+    #     country_group = "G, H, I"
+    # elif user_choice == 4:
+    #     country_group = "J, K, L"
+    # elif user_choice == 5:
+    #     country_group = "M, N, O"
+    # elif user_choice == 6:
+    #     country_group = "P, Q, R"
+    # elif user_choice == 7:
+    #     country_group = "S, T, U"
+    # elif user_choice == 8:
+    #     country_group = "V, W, X"
+    # elif user_choice == 9:
+    #     country_group = "Y, Z"   
+
+    country_group_list = list(retrieve_data.retrieve_countries_dict().keys())
+    country_group_list.sort()
+    to_country_group_choice = country_group_list[user_choice - 1]
+
+    if user_choice >= 1 and user_choice <= 9:
+        db_operations.update_user_data(user_data[1], ["current_question = 9", "to_country_selection = \"" + to_country_group_choice + "\""])
+        return get_current_question_message(9)
+    else:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(6)
+
+
+def question_9_message():
+    to_country_group = to_country_group_choice
+    return "Please select a country:\n" + \
+list_query(retrieve_data.retrieve_countries_dict()[to_country_group])   
+
+
+def execute_question_9(user_data, user_request):
+    incoming_msg = user_request.values.get('Body', '')
+    try:
+        user_choice = int(incoming_msg)
+    except:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(9)
+    
+    to_country_group = user_data[7]
+
+    country_list = retrieve_data.retrieve_countries_dict()[to_country_group]
+
+    if user_choice >= 1 and user_choice <= len(country_list):
+        choosen_country = country_list[user_choice - 1]
+        print("\t\tchosen country " + choosen_country)
+        db_operations.update_user_data(user_data[1], ["current_question = 10", "to_country_selection = \"" + choosen_country + "\""])
+        return get_current_question_message(10)
+    else:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(9)
+    
+
+def question_10_message():
+    products_list = retrieve_data.get_list_available_products(from_country, to_country)
+    return "Please select an available product:\n" + \
+list_query(products_list)   
+
+
+def execute_question_10(user_data, user_request):
+    global chosen_product
+
+    products_list = retrieve_data.get_list_available_products(user_data[6], user_data[7])
+
+    if (not products_list):
+        db_operations.update_user_data(user_data[1], ["current_question = 4"])
+        return "No products available\n" + get_current_question_message(4)
+
+    incoming_msg = user_request.values.get('Body', '')
+    try:
+        user_choice = int(incoming_msg)
+    except:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(10)
+    
+
+    if user_choice >= 1 and user_choice <= len(products_list):
+        chosen_product = products_list[user_choice - 1]
+        print("\t\tchosen product " + chosen_product)
+        db_operations.update_user_data(user_data[1], ["current_question = 11", "chosen_product = \"" + chosen_product + "\""])
+        return get_current_question_message(11)
+    else:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(10)
+
+    
+def question_11_message():
+    global product_data
+
+    product_data = retrieve_data.get_chosen_product_data(chosen_product)
+    return "The currency that you will send will be " + product_data['payInCurrencyCode'] + "\n\
+        and the recepient will receive in " + product_data['payOutCurrencyCode'] +"\n\
+        Please the amount you want to send:"
+
+
+def execute_question_11(user_data, user_request):
+    global amount
+
+    incoming_msg = user_request.values.get('Body', '')
+    try:
+        user_choice = int(incoming_msg)
+    except:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(10)
+    
+    amount = user_choice
+    db_operations.update_user_data(user_data[1], ["current_question = 4"])
+    return get_current_question_message(12)
+
+
+def question_12_message():
+    return "The recepient will recieve " + product_data['payOutCurrencyCode'] + " " + calculate_receipient_amount()
+
 
 def list_query(query):
     query_list_string = ""
@@ -259,3 +432,6 @@ def list_query(query):
 
     
     return query_list_string
+
+def calculate_receipient_amount():
+    return (amount - product_data['fee']['amount']) * product_data['rate']['rate']

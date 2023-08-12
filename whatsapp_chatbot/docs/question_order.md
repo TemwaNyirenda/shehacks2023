@@ -18,7 +18,19 @@
 - Info about Mukuru
 
 ## Question 6
-- Choose country group
+- Choose from country group
 
 ## Question 7
-- Choose country
+- Choose from country
+
+## Question 8
+- Choose to country group
+
+## Question 9
+- Choose to country
+
+## Question 10
+- Choose products
+
+## Question 11
+- Enter amount

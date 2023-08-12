@@ -98,6 +98,18 @@ def get_list_available_products(in_country, out_country):
 
     # print(available_products)
 
+def get_chosen_product_data(chosen_product):
+    total_items = json.loads(requests.get('https://api-uct.mukuru.com/taurus/v1/products/price-check').text)['totalItems']
+    # print(total_items)
+
+    response_API = requests.get('https://api-uct.mukuru.com/taurus/v1/products/price-check?page_size=' + str(total_items))
+    data = response_API.text
+    all_products_data = json.loads(data)['items']
+
+    for products_data in all_products_data:
+        if products_data['description'] == chosen_product:
+            return products_data
+
 
 
 if __name__ == "__main__":
