@@ -1,51 +1,127 @@
-*{
+body {
+    background-color: bisque;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-.header{
-    min-height: 100vh;
-    width: 100%;
-    background-image: white;
-    background-position: center;
-    background-size: cover;
+  }
+  .body-2 {
+    z-index: 1000;
+    background: bisque;
+    background-color: rgb(221, 221, 221);
     position: relative;
-}
-nav{
+  }
+  .nav-bar{
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 5px;
+    padding-left: 2em;
+    padding-right: 5em;
+  }
+
+  .nav-doc{
+    z-index: 1000;
+    background: bisque;
+    background-color: rgb(221, 221, 221);
+    position: relative;
+  }
+  .mukuru{
+    width: auto;
+    height: 80px;
+  }
+
+  
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  select, .product-tabs {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  .product-tabs {
     display: flex;
-    padding: 2% 6%;
     justify-content: space-between;
-    align-items: center;
-}
-nav img{
-    width: 150px;
-}
-.nav-links{
+  }
+  .product-tab {
     flex: 1;
-    text-align: right;
-}
-.nav-links ul li{
-    list-style: none;
-    display: inline-block;
-    padding: 8px 12px;
-    position: relative;
-}
-.nav-links ul li a{
-    color: #df5c11;
-    text-decoration: none;
-    font-size: 13px;
-}
-.nav-links ul li::after{
-    content: "";
-    width: 0%;
-    height: 2px;
-    background: #e0e412;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  .product-tab.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  button {
     display: block;
-    margin: auto;
-    transition: 0.5s;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  #result {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
 
-}
-.nav-links ul li:hover::after{
-    width: 100%;
-
+  }
+  
+  .nav-menu {
+    align-items: center;
+    display: flex;
+    width: 455px;
+    height: 64px;
+    bottom: 150px;
    
-}
+  }
+
+  .nav-menu-3 {
+    float: right;
+    position: relative;
+  
+  }
+
+  .nav-home {
+    color: #007bff;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .nav-link {
+
+    color: #222;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    }
+    
+  .button-menu {
+    color: #f0f0f0;
+    background-color: orangered;
+    border-radius: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .w-nav-button{
+    display: block;
+  }
+
+  .menu-button-4 {
+    background-color: rgba(0, 0, 0, 0);
+    padding-left: 10px;
+    padding-right: 10px;
+  }

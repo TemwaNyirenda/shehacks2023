@@ -1,0 +1,200 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.navbar-3 {
+    justify-content: space-between;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+  }
+
+.navbar-3 {
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 5px;
+    padding-left: 2em;
+    padding-right: 5em;
+}
+
+.body-2{
+    background-color: bisque;
+}
+
+.banner{
+    position: relative;
+
+}
+
+.toggle-button {
+    position: absolute;
+    top: 1.5rem;
+    right: 3rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    color: black;
+}
+
+.toggle-button.bar{
+    height: 1px;
+    width: 100%;
+    background-color: #ddd;
+    color: #ddd;
+    margin: 0.5px;
+}
+.w-nav ::before{
+    content: " ";
+    grid-area: 1 / 1 / 2 / 2;
+    display: table;
+}
+
+.w-nav {
+    z-index: 1000;
+    background: #ddd;
+      background-color: rgb(221, 221, 221);
+    position: relative;
+  }
+
+.w-nav-brand {
+    float: left;
+    color: #333;
+    background-color: #373a36;
+    text-decoration: none;
+    position: relative;
+  }
+
+.a{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.mukuru-image {
+    width: auto;
+    height: 80px;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    display: inline-block;
+  }
+
+.nav-menu-3 {
+    align-items: center;
+    display: flex;
+  }
+
+.w-nav-menu {
+    float: right;
+    position: relative;
+  }
+
+.w-nav-link.w--current {
+    color: beige;
+  }
+
+.w-nav-link {
+    vertical-align: top;
+    color: #ffffff;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+  }
+
+.button-menu {
+    color: #f7f7f7;
+    background-color: #eb424d;
+    border-radius: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 5px;
+  }
+
+.button-menu-login{
+    color: #f7f7f7;
+    background-color: #e06500;
+    border-radius: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+  }
+
+.w-nav[data-collapse="small"] .w-nav-button {
+    display: block;
+  }
+
+.menu-button-4 {
+    background-color: rgba(0, 0, 0, 0);
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+.w-nav-button {
+    float: right;
+    cursor: pointer;
+    padding: 18px;
+    font-size: 24px;
+    position: relative;
+  }
+
+.title{
+    padding: 0 10px;
+    float: right;
+    color: #ddd;
+}
+
+.welcome {
+    background-image: url("https://www.mukuru.com/wp-content/uploads/2023/03/Mukuru_LandingPage.jpg.webp");
+}
+
+.title2{
+    padding: auto;
+    position: relative;
+    color: wheat;
+    top: 150px;
+}
+  
+.icon-2 {
+    color: orangered;
+    font-size: 3rem;
+  }
+
+[class^="w-icon-"], [class*=" w-icon-"] {
+    font-variant: normal;
+    text-transform: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-family: webflow-icons !important;
+  }
+
+@media screen and (width: 320px){
+    
+    .nav-menu-3 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding: 10px 15px;
+        margin: 5px 10px;
+    }
+    .w-nav-link {
+        margin: 10px 15px;
+    }
+    
+}
+
+
+
+
+
+
+
+
