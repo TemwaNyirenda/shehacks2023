@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remittance Calculator</title>
+    <style>
+        /* Add your CSS styles here for responsive design */
+    </style>
+</head>
+<body>
+    <h1>Remittance Calculator</h1>
+
+    <label for="fromCountry">Select sending country:</label>
+    <select id="fromCountry">
+        <option value="" disabled selected>Select a country</option>
+    </select>
+
+    <label for="toCountry">Select destination country:</label>
+    <select id="toCountry">
+        <option value="" disabled selected>Select a country</option>
+    </select>
+
+    <label for="amount">Enter the amount to send:</label>
+    <input type="number" id="amount" placeholder="Enter amount" />
+
+    <div id="productOptions">
+        <!-- Product options for each route will be displayed here -->
+    </div>
+
+    <p id="costDisplay">Remittance cost: $0.00</p>
+
+    <script>
+        const price_url = "https://api-uct.mukuru.com/taurus/v1/products/price-check?";
+        
+        const fromCountrySelect = document.getElementById("fromCountry");
+        const toCountrySelect = document.getElementById("toCountry");
+        const amountInput = document.getElementById("amount");
+        const productOptions = document.getElementById("productOptions");
+        const costDisplay = document.getElementById("costDisplay");
+
+        async function updateProductOptions() {
+            // Clear existing product options
+            productOptions.innerHTML = "";
+
+            const fromCountry = fromCountrySelect.value;
+            const toCountry = toCountrySelect.value;
+
+            if (fromCountry && toCountry) {
+                const queryParams = `from=${fromCountry}&to=${toCountry}`;
+                const url = price_url + queryParams;
+
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    data.items.forEach(item => {
+                        const productOption = document.createElement("div");
+                        const radioInput = document.createElement("input");
+                        radioInput.type = "radio";
+                        radioInput.name = "productOption";
+                        radioInput.value = item.price;
+                        radioInput.setAttribute("data-fee", item.fee.amount);
+                        radioInput.setAttribute("data-rate", item.exchangeRate.rate);
+                        radioInput.addEventListener("change", updateCost);
+
+                        productOption.appendChild(radioInput);
+                        productOption.innerHTML += `Product: ${item.productName}, Price: $${item.price}`;
+                        productOptions.appendChild(productOption);
+                    });
+                } catch (error) {
+                    console.error(`ERROR fetching ${url}:`, error);
+                }
+            }
+        }
+
+        // Event listeners for country selection
+        fromCountrySelect.addEventListener("change", updateProductOptions);
+        toCountrySelect.addEventListener("change", updateProductOptions);
+        amountInput.addEventListener("input", updateCost);
+
+        function updateCost() {
+            const selectedProduct = productOptions.querySelector(":checked");
+            const enteredAmount = parseFloat(amountInput.value) || 0;
+
+            if (selectedProduct) {
+                const feeAmount = parseFloat(selectedProduct.getAttribute("data-fee"));
+                const exchangeRate = parseFloat(selectedProduct.getAttribute("data-rate"));
+                const totalPrice = enteredAmount + feeAmount * exchangeRate;
+                costDisplay.textContent = `Remittance cost: $${totalPrice.toFixed(2)}`;
+            } else {
+                costDisplay.textContent = "Remittance cost: $0.00";
+            }
+        }
+
+        // Fetch and populate country dropdowns
+        async function populateCountries() {
+            try {
+                const response = await fetch(price_url);
+                const data = await response.json();
+
+                const uniqueFromCountries = new Set();
+                const uniqueToCountries = new Set();
+
+                data.items.forEach(item => {
+                    uniqueFromCountries.add(item.payInCountryCode);
+                    uniqueToCountries.add(item.payOutCountryCode);
+                });
+
+                uniqueFromCountries.forEach(country => {
+                    const option = document.createElement("option");
+                    option.value = country;
+                    option.text = country;
+                    fromCountrySelect.appendChild(option);
+                });
+
+                uniqueToCountries.forEach(country => {
+                    const option = document.createElement("option");
+                    option.value = country;
+                    option.text = country;
+                    toCountrySelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error(`ERROR fetching countries:`, error);
+            }
+        }
+
+        // Initial population of country dropdowns
+        populateCountries();
+    </script>
+</body>
+</html>
