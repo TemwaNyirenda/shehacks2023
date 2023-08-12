@@ -82,6 +82,27 @@ def delete_user_data(user_num):
     print("\nClosed database - deleting user from database")
 
 
+def get_list_of_languages():
+    lang_list = []
+
+    conn = sqlite3.connect('database/user_selection.sqlite')
+    print("\nOpened database successfully - finding user in database")
+
+    select_return = conn.execute("SELECT * FROM languages")
+
+    row_num = 1
+
+    for row in select_return:
+        lang_list.append(str(row_num) + ". " + row[1].capitalize())
+        row_num += 1
+
+    print("\nSuccessfully retrieved language list")
+    conn.close()
+    print("\nClosed database - finding user in database")
+
+    return lang_list
+
+
 if __name__ == "__main__":
 #    print(find_user_in_db("+27000000000"))
 #    insert_user_into_db("+27444444444")
