@@ -10,3 +10,7 @@ pip install python-dotenv
 pip install opencv-python
 pip install face-recognition
 pip install gTTS
+pip install pycountry-convert
+
+# sudo apt-get install python3-pycountry
+# sudo apt-get install python3-pprintpp

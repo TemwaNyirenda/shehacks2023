@@ -8,9 +8,9 @@ source shehacks2023-venv/bin/activate
 
 ### Install dependences
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make install file executable if not:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chmod +x whatsapp_chatbot/install.sh  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chmod +x install.sh  
 
-./whatsapp_chatbot/install.sh
+./install.sh
 ### Run flask in virtual environment
 flask run
 ### Make application reachable from internet (in separate tab)

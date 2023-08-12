@@ -6,3 +6,10 @@
 
 ## Question 2
 - Ask which language.
+
+## Question 3
+- User preferences set up
+- Would you like to continue
+
+## Question 4
+- Main menu 
