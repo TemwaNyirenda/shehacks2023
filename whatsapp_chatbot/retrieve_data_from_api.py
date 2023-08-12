@@ -38,8 +38,8 @@ def retrieve_countries_dict():
     #         dict_countries_continents[continent] = []
     #         dict_countries_continents[continent].append(country)
 
-    # for key in dict_countries_continents.keys():
-    #     dict_countries_continents[key].sort()
+    for key in dict_countries_continents.keys():
+        dict_countries_continents[key].sort()
 
     # for key in dict_countries_continents.keys():
     #     print(key + ": " + ", ".join(dict_countries_continents[key]))
@@ -75,6 +75,8 @@ def get_country_code(country):
             return country_data['code']
         
 def get_list_available_products(in_country, out_country):
+    # in_country is where money is coming from
+
     in_country_code = get_country_code(in_country)
     # print(in_country_code)
     out_country_code = get_country_code(out_country)

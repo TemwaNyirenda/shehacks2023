@@ -1,6 +1,14 @@
 import whatsapp_chatbot.db_operations as db_operations
+import whatsapp_chatbot.retrieve_data_from_api as retrieve_data
+
+user_datta = ""
+
 
 def execute_current_question(user_data, user_request):
+    global user_datta
+
+    user_datta = user_data
+
     current_question = user_data[2]
 
     if current_question == 0:
@@ -13,6 +21,10 @@ def execute_current_question(user_data, user_request):
         return execute_question_3(user_data, user_request)
     elif current_question == 4:
         return execute_question_4(user_data, user_request)
+    elif current_question == 6:
+        return execute_question_6(user_data, user_request)
+    elif current_question == 7:
+        return execute_question_7(user_data, user_request)
     else:
         print("\n** INTERNAL ERROR: Incorrect current question retrieved from user data **\n")
 
@@ -20,48 +32,40 @@ def execute_current_question(user_data, user_request):
 def get_current_question_message(current_question_num):
 
     if current_question_num == 0:
-        return "Welcome to Mukuru Maverick's Whatsapp Chatbot!!!\n\
+        return question_0_message()
+
+    elif current_question_num == 1:
+        return question_1_message()
+
+    elif current_question_num == 2:
+        return question_2_message()
+        
+    elif current_question_num == 3:
+        return question_3_message()
+       
+    elif current_question_num == 4:
+        return question_4_message()
+        
+    elif current_question_num == 5:
+        return question_5_message()
+        
+    elif current_question_num == 6:
+        return question_6_message()
+    
+    elif current_question_num == 7:
+        return question_7_message()
+    
+    else:
+        return "Haven't coded up to that point"
+    
+
+def question_0_message():
+    return "Welcome to Mukuru Maverick's Whatsapp Chatbot!!!\n\
 ---\n\
 Before we continue, let's setup your chatbot preferences.\n\
 Would you like to continue:\n\
 1. Yes\n\
 2. No"
-
-    elif current_question_num == 1:
-        return "Awesome! First you need to select what format you would like the chatbot to reply in:\n\
-1. Text\n\
-2. Voice Notes"
-
-    elif current_question_num == 2:
-        return "Great! Next can you select the language that you want the chatbot to use:\n" + \
-"\n".join(db_operations.get_list_of_languages())
-    
-    elif current_question_num == 3:
-        return "Thank you! You've set up your preferences.\n\
-Would you like to continue?\n\
-1. Yes\n\
-2. No"
-
-    elif current_question_num == 4:
-        return "Welcome to Mukuru Maverick's Main Menu\n\
-        ---\n\
-Would you like to:\n\
-1. Learn more about Mukuru\n\
-2. Use Mukuru's Remittance Calculator"
-
-    elif current_question_num == 5:
-        return "Mukuru helps you move money around Africa.\n\
-Sending cash for instant collection\n\
-or topping up a bank account or mobile wallet,\n\
-has never been easier.\n\
-We use the latest mobile and web-based technologies\n\
-to give you the best experience possible."
-
-    elif current_question_num == 6:
-        return "Okay, first we need you to select the country you're sending from."
-    
-    else:
-        return "Haven't coded up to that point"
 
 
 def execute_question_0(user_data, user_request):
@@ -83,6 +87,12 @@ def execute_question_0(user_data, user_request):
         return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(0)
 
 
+def question_1_message():
+    return "Awesome! First you need to select what format you would like the chatbot to reply in:\n\
+1. Text\n\
+2. Voice Notes"
+
+
 def execute_question_1(user_data, user_request):
 
     incoming_msg = user_request.values.get('Body', '')
@@ -101,6 +111,10 @@ def execute_question_1(user_data, user_request):
     else:
         return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(1)
 
+
+def question_2_message():
+    return "Great! Next can you select the language that you want the chatbot to use:\n" + \
+"\n".join(db_operations.get_list_of_languages())
 
 
 def execute_question_2(user_data, user_request):
@@ -122,6 +136,12 @@ def execute_question_2(user_data, user_request):
         return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(2)
 
 
+def question_3_message():
+    return "Thank you! You've set up your preferences.\n\
+Would you like to continue?\n\
+1. Yes\n\
+2. No"
+
 
 def execute_question_3(user_data, user_request):
 
@@ -142,6 +162,13 @@ def execute_question_3(user_data, user_request):
         return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(3)
     
 
+def question_4_message():
+    return "Welcome to Mukuru Maverick's Main Menu\n\
+---\n\
+Would you like to:\n\
+1. Learn more about Mukuru\n\
+2. Use Mukuru's Remittance Calculator"
+
 
 def execute_question_4(user_data, user_request):
 
@@ -160,3 +187,75 @@ def execute_question_4(user_data, user_request):
         return get_current_question_message(6)
     else:
         return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(4)
+
+
+def question_5_message():
+    return "Mukuru helps you move money around Africa.\n\
+Sending cash for instant collection\n\
+or topping up a bank account or mobile wallet,\n\
+has never been easier.\n\
+We use the latest mobile and web-based technologies\n\
+to give you the best experience possible."
+
+
+def question_6_message():
+    return "Okay, first we need you to select the country you're sending from.\n\
+Please select the group that your country falls under:\n" + \
+list_query(retrieve_data.retrieve_countries_dict().keys())
+
+
+def execute_question_6(user_data, user_request):
+
+    incoming_msg = user_request.values.get('Body', '')
+    try:
+        user_choice = int(incoming_msg)
+    except:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(6)
+
+
+    if user_choice == 1:
+        country_group = "A, B, C"
+    elif user_choice == 2:
+        country_group = "D, E, F"
+    elif user_choice == 3:
+        country_group = "G, H, I"
+    elif user_choice == 4:
+        country_group = "J, K, L"
+    elif user_choice == 5:
+        country_group = "M, N, O"
+    elif user_choice == 6:
+        country_group = "P, Q, R"
+    elif user_choice == 7:
+        country_group = "S, T, U"
+    elif user_choice == 8:
+        country_group = "V, W, X"
+    elif user_choice == 9:
+        country_group = "Y, Z"   
+
+
+    if user_choice >= 1 and user_choice <= 9:
+        db_operations.update_user_data(user_data[1], ["current_question = 7", "from_country_selection = \"" + country_group + "\""])
+        return get_current_question_message(7)
+    else:
+        return "I don't understand \"" +incoming_msg +"\"\n---\n" + get_current_question_message(6)
+
+
+def question_7_message():
+    from_country_group = user_datta[6]
+    return "Okay, first we need you to select the country you're sending from.\n\
+Please select a country:\n" + \
+list_query(retrieve_data.retrieve_countries_dict()[from_country_group])   
+
+def execute_question_7(user_data, user_request):
+    pass
+
+def list_query(query):
+    query_list_string = ""
+
+    q_num = 1
+    for q in query:
+        query_list_string += str(q_num) + ". " + q + "\n"
+        q_num += 1
+
+    
+    return query_list_string

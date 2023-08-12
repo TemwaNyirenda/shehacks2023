@@ -13,3 +13,12 @@
 
 ## Question 4
 - Main menu 
+
+## 'Question' 5
+- Info about Mukuru
+
+## Question 6
+- Choose country group
+
+## Question 7
+- Choose country
