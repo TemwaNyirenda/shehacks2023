@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+
+    <div class= "about-us" data-aos="fade-up">
+      <a href= ""><img src="" alt=""></a>
+        <h1 id="h-about mukuru" class= "heading">About Mukuru</h1>
+        
+        <p>
+            Mukuru leads the way in Africa when it comes to money transfers and a leading Next Gen Financial Services Platform that offers affordable and reliable financial services to the emerging consumer.
+
+        </p>
+        <p>
+            From our foundations based on providing the migrant diaspora with safe, convenient money transfers, we’ve evolved a wide range of products and services to suit our customer’s exact needs. 
+        </p>
+        <p>
+            Our value-added services include:</p>
+        <ul>
+            <li>
+                Cash Transfers</li>
+            <li>
+                Mukuru Funeral Cover</li>
+            <li>
+                The Mukuru Card</li>
+            <li>
+                The Mukuru Wallet</li>
+            <li>
+                Mukuru Groceries</li>
+        </ul>
+
+        <p>
+            Our successful customer engagement strategy hinges on how we speak to our customers clearly and plainly based on a deep understanding of their unique pain points.
+        </p>
+
+        <p>
+            We engage with our customers via WhatsApp, free USSD, the Mukuru App, and our website. Our call centre offers customer service in 15 different languages to suit our client’s needs.
+        </p>
+
+        <h4 id="h-what-Mukuru-means" class="heading">
+            <strong>What Mukuru means.</strong>
+
+        </h4>
+
+        <p>
+            Our name, Mukuru means ‘elder’ in Shona and reflects our desire to represent a trusted, wise, and supportive advisor in our Southern African community.
+        </p>
+
+        <h4 id="h-who-we-are" class="heading">
+            <strong>Who We Are</strong>
+        </h4>
+
+      
+        <p>
+            We’re dedicated to solving problems for Africa’s emerging consumers by understanding their challenges and needs from their point of view.
+        </p>
+
+        <p>
+            We understand that we serve a community of hard-working individuals, often overlooked by traditional financial providers, who have sacrificed much in their search for opportunities.
+        </p>
+
+        <p>
+            Everyone on our team is committed to simplifying and speeding up financial services for our customers, so they can take control of their financial lives.
+        </p>
+
+        <h4 id="h-what-drives-us" class="heading">
+            <strong>What Drives Us?</strong>
+        </h4>
+
+        <p>
+            An overwhelming desire to serve and support our customers is what drives us to provide the most relevant and easily accessible financial opportunities for all Africans.
+        </p>
+      
+  </div>
+  
+
+        
+        
+            </div>
+            <div class="timeline" data-aos="fade-left">
+
+            <h2 class="heading">Our Story</h2>
+    
+            <p>
+                <strong>2004 - Founded</strong>
+            </p>
+    
+            <p>
+                Mukuru is created in the United Kingdom when a simple platform is designed that allows a person in London to buy an international talk time voucher, confirmed by text message; to connect with family in Zimbabwe (it’s not possible at this time to dial into or out of Zimbabwe).
+            </p>
+    
+            <p>
+                <strong>2006 - First Offering</strong>
+            
+            <p>
+                Fuel coupons and groceries are added to international talk time. The service is usable only from the UK.
+            </p>
+    
+            <p>
+                <strong>2009 - Remittance Begins</strong>
+            </p>
+    
+            <p>
+                A platform is developed to enable migrant workers to send USD from the UK and EU to their families in Zimbabwe. Partners are activated in the destination country to make sending and receiving remittances easier, safer and more affordable.
+            </p>
+
+    
+            <p>
+                <strong>2010 - Our First Partnership</strong>
+                
+            </p>
+    
+            <p>
+                The Mukuru business in South Africa is formed from a joint venture with Inter-Africa, a Bureau de Change. Most migrant workers are sending home remittances by informal means; this is expensive, unreliable and dangerous even. 
+            </p>
+    
+            <p>
+                Mukuru grows its technology to enable safer, more reliable electronic remittances and expands its contact centre to communicate with customers in their own languages.
+            </p>
+    
+            <p>
+                <strong>2012 - Expands Into New African Markets</strong>
+            </p>
+    
+            <p>
+                Technology is developed to aid people in their personal journeys toward financial inclusion. This includes an easily accessible free self-service and army of agents equipped with an Android app to sign-up and serve customers wherever they live. 
+            </p>
+    
+            <p>
+                Mukuru spearheads a new way to capture KYC (Know your Customer) documents with the support of the South African Reserve Bank. Customers are verified by agents who capture and verify documents like passports and asylum papers at the customer’s place of residence. Instead of being an obstacle, compliance becomes an enabler.
+            </p>
+    
+            <p>
+                Mukuru creates a free customer USSD platform and again innovates by splitting a transaction into its various parts. Customers can now create an order, a reference number is texted to them, which they present at a retail partner and pay for their order in cash. 
+            </p>
+    
+            <p>
+                PEP becomes Mukuru’s first retail partner in South Africa.
+            </p>
+    
+            <p>
+                <strong>2017 - New Territories And Opportunities</strong>
+            </p>
+    
+            <p>
+                Additional needs and opportunities become apparent with a new customer base that is largely unbanked. The Mukuru Card (backed by Standard Bank) is created to enable customers to have their salaries paid into a money account, shop electronically and pay for remittances.
+            </p>
+    
+            <p>
+                Mukuru applies for financial services licences in destination countries and creates its own branch presence, along with customer application agent services and the USSD self-help channel. 
+            </p>
+
+        
+    
+            <p>
+                <strong>Travelling East</strong>
+            </p>
+    
+            <p>
+                Mukuru brings Asia onboard, working with aggregators in a two year pilot project to ensure efficiency in a new market that demands a richer front-end experience and more sophisticated technological solutions. Mukuru entrenches its presence in India, Pakistan and Bangladesh.
+                
+            </p>
+            <p>
+                A Mukuru Orange Booth network is launched during the Zimbabwe cash crisis. The booths enable families back home to receive cash when they need it most. A corresponding app is developed to ensure service to customers remains uninterrupted.
+            </p>
+    
+            <p>
+                DRC, Namibia, Ethiopia and Ghana join the Mukuru family.
+            </p>
+
+            <p>
+                <strong>2018 - Intra-Africa Remittances Flows</strong>
+            </p>
+    
+            <p>
+                Mukuru activates intra-Africa remittance flows. This significantly increases volume and places its systems under pressure. 
+            </p>
+    
+            <p>
+                Using a micro-services approach, Mukuru creates its own FinTech solutions to allow for larger volumes and an increasing compliance framework to accommodate regulations in its various countries of operation.
+            </p>
+    
+            <p>
+                <strong>2019 - Africa Market Continues To Grow</strong>
+            Additional needs and opportunities become apparent with a new customer base that is largely unbanked. The Mukuru Card (backed by Standard Bank) is created to enable customers to have their salaries paid into a money account, shop electronically and pay for remittances.
+        </p>
+
+        <p>
+            Mukuru applies for financial services licences in destination countries and creates its own branch presence, along with customer application agent services and the USSD self-help channel. 
+        </p>
+
+
+        <p>
+            Using a micro-services approach, Mukuru creates its own FinTech solutions to allow for larger volumes and an increasing compliance framework to accommodate regulations in its various countries of operation.
+        </p>
+
+
+        <p>
+            <strong>2020 - Innovation From New Challenges</strong>
+        </p>
+
+        <p>
+            Mukuru expands into China.
+        </p>
+
+        <p>
+            It purchases several hundred Zoona booths in Malawi which significantly broadens the company’s rural reach.
+        </p>
+
+        <p>
+            Mukuru has a global footprint with 60 partnerships that enable more than 100 brands to provide cash out points. Plans include expansion of its Orange Booths and increasing its ability to accommodate the intra-Africa flow of remittances.
+        </p>
+
+        <p>
+            The COVID-19 pandemic creates increased uptake of USSD and WhatsApp direct sign-up and demand for electronic products. Mukuru launches Mukuru Groceries and Mukuru Shopping Discounts.
+        </p>
+
+        <p>
+            Mukuru partners with WorldRemit to become a payout partner for WorldRemit remittances across territories where Mukuru has its own booth and branch network.
+        </p>
+        
+        <p>
+            Mukuru is listed as one of the leading 150 cross-border businesses globally in the 2020 FXC Intelligence Incumbents vs Challengers in Cross-Border Payments.
+        </p>
+
+    </div>
+
+    <script>
+        AOS.init();
+    </script>
+    
+</body>
+</html>
