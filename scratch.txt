@@ -1,0 +1,14 @@
+Request
+<Request 'http://c84a-197-184-182-133.ngrok.io/' [POST]>
+
+
+Request.form
+ImmutableMultiDict([('SmsMessageSid', 'SM4237d0ed4320415bda9fa48e88bcbb8f'), ('NumMedia', '0'), ('ProfileName', 'Temwa👋😁'), ('SmsSid', 'SM4237d0ed4320415bda9fa48e88bcbb8f'), ('WaId', '27677697515'), ('SmsStatus', 'received'), ('Body', 'Hey'), ('To', 'whatsapp:+14155238886'), ('NumSegments', '1'), ('ReferralNumMedia', '0'), ('MessageSid', 'SM4237d0ed4320415bda9fa48e88bcbb8f'), ('AccountSid', 'AC363385093093c6ce424a82ad0ef25a1a'), ('From', 'whatsapp:+27677697515'), ('ApiVersion', '2010-04-01')])
+
+Voice Note:
+Request
+<Request 'http://c84a-197-184-182-133.ngrok.io/' [POST]>
+
+
+Request.form
+ImmutableMultiDict([('MediaContentType0', 'audio/ogg'), ('SmsMessageSid', 'MM4926d597b865fd765cf80f5ba52ccaf6'), ('NumMedia', '1'), ('ProfileName', 'Temwa👋😁'), ('SmsSid', 'MM4926d597b865fd765cf80f5ba52ccaf6'), ('WaId', '27677697515'), ('SmsStatus', 'received'), ('Body', ''), ('To', 'whatsapp:+14155238886'), ('NumSegments', '1'), ('ReferralNumMedia', '0'), ('MessageSid', 'MM4926d597b865fd765cf80f5ba52ccaf6'), ('AccountSid', 'AC363385093093c6ce424a82ad0ef25a1a'), ('From', 'whatsapp:+27677697515'), ('MediaUrl0', 'https://api.twilio.com/2010-04-01/Accounts/AC363385093093c6ce424a82ad0ef25a1a/Messages/MM4926d597b865fd765cf80f5ba52ccaf6/Media/MEd6fde8d14b237111c67aeff702f3e545'), ('ApiVersion', '2010-04-01')])
